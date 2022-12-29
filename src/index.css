@@ -1,0 +1,17 @@
+:root {
+  --color-on-hover: #eee;
+}
+
+
+body {
+  margin: 0;
+  font-family: verdana, arial, helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+#root {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+}

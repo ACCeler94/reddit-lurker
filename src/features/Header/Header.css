@@ -1,0 +1,34 @@
+header {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 16px;
+    align-content: center;
+    padding: 0 3%;
+    border-bottom: 2px solid #F6F7F8;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    max-height: 4em;
+    z-index: 999;
+}
+
+#title-logo {
+    font-weight: bold;
+    grid-column: 1/2;
+    display: flex;
+    align-items: center;
+  }
+
+
+#title-logo img {
+    height: 32px;
+    width: 32px;
+
+}
+
+#title-logo p {
+    font-family: sans-serif;
+    margin-left: 2.5%;
+    font-size: 1.25rem;
+}

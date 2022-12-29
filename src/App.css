@@ -1,0 +1,11 @@
+aside {
+  grid-row: 2;
+  padding-left: 16px;
+}
+
+
+main {
+  grid-column: 2/span 2;
+  background-color: #DAE0E6;
+  
+}

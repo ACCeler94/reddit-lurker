@@ -1,0 +1,24 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input{
+    border: none;
+    flex-grow: 1;    
+    background-color: #F6F7F8;
+    border: 1px solid #edeff1;
+    border-radius: 1.25em;
+    height: 2rem;
+    padding: 0 3%;
+}
+
+.search-bar input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+.search-bar input:hover {
+    border: 1px solid blue;
+}

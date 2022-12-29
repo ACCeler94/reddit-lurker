@@ -1,0 +1,26 @@
+.side-bar {
+    position: sticky;
+    left: 0;
+    top: 6em;
+}
+
+.side-bar ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+}
+
+.side-bar li {
+    height: 3em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.side-bar li:hover {
+    cursor: pointer;
+    background-color: var(--color-on-hover);
+}
