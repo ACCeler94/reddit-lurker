@@ -1,5 +1,6 @@
 :root {
   --color-on-hover: #eee;
+  font-size: 18px;
 }
 
 
@@ -13,5 +14,5 @@ body {
 
 #root {
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-columns: 1fr 2fr 1fr;
 }

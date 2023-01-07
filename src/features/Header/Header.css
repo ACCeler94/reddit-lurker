@@ -22,13 +22,13 @@ header {
 
 
 #title-logo img {
-    height: 32px;
-    width: 32px;
+    height: 40px;
+    width: 40px;
 
 }
 
 #title-logo p {
     font-family: sans-serif;
     margin-left: 2.5%;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
 }

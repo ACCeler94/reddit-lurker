@@ -14,7 +14,7 @@
 }
 
 
-.image-container img {
+.media-container .media {
     max-width: 100%;
     min-width: 50%;
 }

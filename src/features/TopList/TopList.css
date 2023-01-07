@@ -18,9 +18,17 @@
     align-items: center;
     margin-top: 5px;
     margin-bottom: 5px;
+    margin-right: 5%;
 }
 
 .side-bar li:hover {
     cursor: pointer;
     background-color: var(--color-on-hover);
 }
+
+#subreddit-icon {
+    height: 25px;
+    width: 25px;
+    padding: 0 5%;
+}
+

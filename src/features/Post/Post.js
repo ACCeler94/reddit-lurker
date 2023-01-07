@@ -13,8 +13,8 @@ export function Post(){
     const setContent = (jsonContentPlaceholder) => {
         if(jsonContentPlaceholder === "pic") {
             return (
-                <div className="image-container">
-                    <img src="https://i.redd.it/qc29ozsgig6a1.jpg" alt="" />
+                <div className="media-container">
+                    <img className="media" src="https://i.redd.it/qc29ozsgig6a1.jpg" alt="" />
                 </div>
             )
         } else if(jsonContentPlaceholder === "text"){
