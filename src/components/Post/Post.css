@@ -1,6 +1,6 @@
 .post-wrapper {
     display: flex;
-    max-width: 80%;
+    max-width: 85%;
     margin: 4% auto;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -25,7 +25,7 @@
     align-items: center;
     margin-top: 1%;
     padding-right: 2%;
-    width: 15%;
+    width: 10%;
 }
 
 .subreddit-name, .author {

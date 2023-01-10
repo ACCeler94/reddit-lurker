@@ -6,7 +6,7 @@ import './Post.css'
 
 
 
-export function Post(){
+export function Post(props){
 
     let jsonContentPlaceholder = "pic"
 

@@ -15,12 +15,12 @@ export const topListSlice = createSlice({
         state.isLoadingTopList = true;
         state.hasError = false;
     },    
-    getTopSubredditsSuccess(state, action) {
+        getTopSubredditsSuccess(state, action) {
         state.isLoadingTopList = false;
         state.hasError = false;
         state.topListElements = action.payload;
     },  
-    getTopSubredditsFailed(state) {
+        getTopSubredditsFailed(state) {
         state.isLoadingTopList = false;
         state.hasError = true;
     }}
