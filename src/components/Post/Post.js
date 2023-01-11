@@ -14,7 +14,7 @@ export function Post(props){
         if(jsonContentPlaceholder === "pic") {
             return (
                 <div className="media-container">
-                    <img className="media" src="https://i.redd.it/qc29ozsgig6a1.jpg" alt="" />
+                    <img className="media" src={props.postData.url} alt="" />
                 </div>
             )
         } else if(jsonContentPlaceholder === "text"){
@@ -34,14 +34,14 @@ export function Post(props){
                 <div className="extra-container">
                     <div className="arrow-container">
                         <ImArrowUp id="arrow-icon" />
-                        <span className="votes-number">110K</span>
+                        <span className="votes-number">{props.postData.score}</span>
                     </div>
                     <div className="comment-icon-container">
                         <BiCommentDetail id="comment-icon" />
-                        <span className="comments-number">20k</span>
+                        <span className="comments-number">{props.postData.num_comments}</span>
                     </div>
                     <div>
-                        <a href="" className="redirect-container">
+                        <a href={"https://www.reddit.com" + props.postData.permalink} className="redirect-container" target="_blank">
                             <RiShareBoxLine id="redirect-icon" />
                             <span>Open on <span className="reddit">Reddit</span></span>
                         </a>
@@ -49,9 +49,11 @@ export function Post(props){
                 </div>
             <div className="post-container">
                 <div className="post-info">
-                    <span className="subreddit-name">Subreddit name</span>
-                    <h3 className="post-title">Title Placeholder</h3>
-                    <span className="author">made by UserNamePlaceholder 8 hours ago</span>
+                    <span className="subreddit-name">
+                        {props.postData.subreddit_name_prefixed}
+                    </span>
+                    <h3 className="post-title"> {props.postData.title} </h3>
+                    <span className="author">Posted by: {props.postData.author}</span>
                 </div>
                 <div className="content">
                     {setContent(jsonContentPlaceholder)}

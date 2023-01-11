@@ -4,15 +4,15 @@ import { Loader } from "../../components/Loader/Loader";
 import { Post } from "../../components/Post/Post";
 import { fetchPosts, isLoadingPosts, selectPosts, selectSelectedSubreddit } from "./postsSlice";
 
-function Posts() {
+export function Posts() {
     const dispatch = useDispatch();
     const postsList = useSelector(selectPosts);
     const isLoading = useSelector(isLoadingPosts);
     const selectedSubreddit = useSelector(selectSelectedSubreddit);
 
     useEffect(() => {
-        dispatch(fetchPosts()), [dispatch, selectedSubreddit]
-    })
+        dispatch(fetchPosts(selectedSubreddit))
+    }, [dispatch])
 
     if(isLoading){
         return (

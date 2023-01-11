@@ -17,6 +17,7 @@
 .media-container .media {
     max-width: 100%;
     min-width: 50%;
+    margin: auto;
 }
 
 .extra-container {
@@ -36,6 +37,7 @@
 .post-info {
     max-width: 80%;
     overflow-wrap: break-word;
+    margin-bottom: 1em;
 }
 
 .post-info h3 {

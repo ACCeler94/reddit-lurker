@@ -9,8 +9,12 @@ export const getTopSubreddits = async () => {
 }
 
 // get posts for selected subreddit
-export const getPosts = async (selectedSubreddit) =>{
+export const getPosts = async (selectedSubreddit) => {
     const response = await fetch(`${API_ROOT}/r/${selectedSubreddit}/.json`);
     const json = await response.json();
-    return  json.data.childern.map(post => post.data)
+    return json.data.children.map((post) => post.data)
+    
 }
+
+
+

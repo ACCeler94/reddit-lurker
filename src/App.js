@@ -3,6 +3,7 @@ import './App.css';
 import { Header } from "./features/Header/Header";
 import { Post } from './components/Post/Post.js';
 import { TopList } from './features/TopList/TopList';
+import { Posts } from './features/Posts/Posts';
 
 function App() {
 
@@ -10,8 +11,7 @@ function App() {
     <>
       <Header />
       <main>
-        <Post />
-        <Post />
+        <Posts />
       </main>
       <aside>
         <TopList />

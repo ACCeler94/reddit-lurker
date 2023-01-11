@@ -4,7 +4,7 @@ import { getPosts } from "../../api/redditApi";
 export const postsSlice = createSlice({
     name: "posts",
     initialState: {
-        selectedSubreddit: "worldnews",
+        selectedSubreddit: "valheim",
         hasError: false,
         isLoadingPosts: false,
         posts: []
@@ -14,7 +14,7 @@ export const postsSlice = createSlice({
             state.isLoadingPosts = true;
             state.hasError = false;
         },
-        getPostListSuccess(state, action){
+        getPostsSuccess(state, action){
             state.isLoadingPosts = false;
             state.hasError = false;
             state.posts = action.payload;
@@ -30,11 +30,11 @@ export const { startGetPosts, getPostsSuccess, getPostsFailed } = postsSlice.act
 
 
 // thunk for fetching posts
-export const fetchPosts = () => async (dispatch) => {
+export const fetchPosts = (selectedSubreddit) => async (dispatch) => {
     try {
         dispatch(startGetPosts());
-        const posts = await getPosts();
-        dispatch(getPostsSuccess(posts))
+        const postsList = await getPosts(selectedSubreddit);
+        dispatch(getPostsSuccess(postsList))
     } catch (error) {
         dispatch(getPostsFailed())
     }}
@@ -46,3 +46,4 @@ export const selectPosts = (state) => state.posts.posts;
 export const isLoadingPosts = (state) => state.posts.isLoadingPosts;
 
 export default postsSlice.reducer;
+
