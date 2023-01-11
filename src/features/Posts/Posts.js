@@ -17,7 +17,7 @@ export function Posts() {
     if(isLoading){
         return (
             <div className="posts-loader" style={{margin: "auto"}}>
-            <h3>Loading Posts...</h3>
+            <h3 style={{margin: "5% auto", textAlign: "center"}}>Loading Posts...</h3>
             <Loader />
             </div>
         )
@@ -25,7 +25,7 @@ export function Posts() {
 
     return postsList.map( element =>{
         return (
-            <Post postData={element} />
+            <Post postData={element} key={element.id} />
         )
     })
 

@@ -3,12 +3,16 @@
   font-size: 18px;
 }
 
+html, body{
+  min-height:100%;
+}
 
 body {
   margin: 0;
   font-family: verdana, arial, helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height:100vh;
 }
 
 

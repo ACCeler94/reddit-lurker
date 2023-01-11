@@ -13,11 +13,19 @@
     max-width: 90%;
 }
 
+.media-container {
+    display: flex;
+    justify-content: center;
+}
 
 .media-container .media {
     max-width: 100%;
     min-width: 50%;
-    margin: auto;
+    margin: 0 auto;
+}
+
+.text-container {
+    text-align: justify;
 }
 
 .extra-container {
@@ -117,5 +125,5 @@
 }
 
 .author {
-    color:gray;
+    color:rgb(80, 79, 79);
 }
