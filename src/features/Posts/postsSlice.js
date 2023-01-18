@@ -4,10 +4,12 @@ import { getPosts } from "../../api/redditApi";
 export const postsSlice = createSlice({
     name: "posts",
     initialState: {
-        selectedSubreddit: "valheim",
+        selectedSubreddit: "worldnews",
         hasError: false,
         isLoadingPosts: false,
-        posts: []
+        posts: [],
+        selectedPostData: {},
+        showPostWithComments: false
     },
     reducers: {
         startGetPosts(state){
@@ -22,11 +24,28 @@ export const postsSlice = createSlice({
         getPostsFailed(state){
             state.isLoadingPosts = false;
             state.hasError = true;
+        },
+        selectSubreddit(state, action){
+            state.selectedSubreddit = action.payload;
+            state.showPostWithComments = false;
+        },
+        selectPost(state, action){
+            state.selectedPostData = action.payload;
+            state.showPostWithComments = true;
         }
     }
 })
 
-export const { startGetPosts, getPostsSuccess, getPostsFailed } = postsSlice.actions
+export const { startGetPosts, getPostsSuccess, getPostsFailed, selectSubreddit, selectPost } = postsSlice.actions
+
+
+export const selectSelectedSubreddit = (state) => state.posts.selectedSubreddit;    
+export const selectPosts = (state) => state.posts.posts;
+export const isLoadingPosts = (state) => state.posts.isLoadingPosts;
+export const selectSelectedPost = (state) => state.posts.selectedPostData;
+export const showPostWithComments = (state) => state.posts.showPostWithComments
+
+export default postsSlice.reducer;
 
 
 // thunk for fetching posts
@@ -38,12 +57,3 @@ export const fetchPosts = (selectedSubreddit) => async (dispatch) => {
     } catch (error) {
         dispatch(getPostsFailed())
     }}
-
-    
-
-export const selectSelectedSubreddit = (state) => state.posts.selectedSubreddit;    
-export const selectPosts = (state) => state.posts.posts;
-export const isLoadingPosts = (state) => state.posts.isLoadingPosts;
-
-export default postsSlice.reducer;
-

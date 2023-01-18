@@ -3,7 +3,7 @@ import { selectTopList, isLoadingTopList, fetchTopList } from "./topListSlice";
 import { useDispatch, useSelector} from "react-redux";
 import { Loader } from "../../components/Loader/Loader";
 import './TopList.css'
-
+import { selectSubreddit} from "../Posts/postsSlice";
 
 export function TopList() {
     const dispatch = useDispatch();
@@ -24,13 +24,25 @@ export function TopList() {
     }
 
 
+    // change handler for selecting subreddits
+    const topListClickHandler = (event) => {
+       dispatch(selectSubreddit(event.target.id))
+    }   
+
+
     return (
         <div className='side-bar'>
             <h3>Top Subreddits</h3>
             <ul className="subreddit-list">
                 {topList.slice(0, 8).map(element => {
                     return (
-                    <li key={element.id} ><img src={element.icon_img || "https://styles.redditmedia.com/t5_2u0xf/styles/communityIcon_2mfivuevv58a1.png?width=256&s=e108747628c6581f50cbd9514fb45f2e61826f51" } alt="subreddit-icon" id="subreddit-icon" />{element.display_name} </li>
+                    <li 
+                        key={element.id} 
+                        id={element.display_name} 
+                        onClick={topListClickHandler} >
+                            <img src={element.icon_img || "https://styles.redditmedia.com/t5_2u0xf/styles/communityIcon_2mfivuevv58a1.png?width=256&s=e108747628c6581f50cbd9514fb45f2e61826f51" } alt="subreddit-icon" id="subreddit-icon" />
+                            {element.display_name}
+                        </li>
                 )})}
             </ul>
         </div>

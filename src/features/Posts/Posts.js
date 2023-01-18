@@ -2,17 +2,20 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../../components/Loader/Loader";
 import { Post } from "../../components/Post/Post";
-import { fetchPosts, isLoadingPosts, selectPosts, selectSelectedSubreddit } from "./postsSlice";
+import { PostWithComments } from "../PostWithComments/PostWithComments";
+import { fetchPosts, isLoadingPosts, selectPosts, selectSelectedSubreddit, selectSelectedPost, showPostWithComments } from "./postsSlice";
 
 export function Posts() {
     const dispatch = useDispatch();
     const postsList = useSelector(selectPosts);
     const isLoading = useSelector(isLoadingPosts);
     const selectedSubreddit = useSelector(selectSelectedSubreddit);
+    const clickedPost = useSelector(selectSelectedPost)
+    const showOnlyPostWithComments = useSelector(showPostWithComments)
 
     useEffect(() => {
         dispatch(fetchPosts(selectedSubreddit))
-    }, [dispatch])
+    }, [dispatch, selectedSubreddit])
 
     if(isLoading){
         return (
@@ -23,7 +26,13 @@ export function Posts() {
         )
     }
 
-    return postsList.map( element =>{
+    if(showOnlyPostWithComments){
+        return (
+            <PostWithComments postData = {clickedPost}/>
+        )
+    }
+
+    return postsList.map( element => {
         return (
             <Post postData={element} key={element.id} />
         )
