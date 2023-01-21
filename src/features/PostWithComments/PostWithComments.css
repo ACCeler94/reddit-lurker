@@ -5,3 +5,49 @@
 .comment-spinner {
     margin: 5% auto
 }
+
+.comments-container {
+    display: flex;
+    max-width: 85%;
+    margin: -2% auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 36px;
+    padding-left: 8px;
+}
+
+.comment-card {
+    font-size: 16px;
+    border-left: solid 1px #ccc;
+    margin-bottom: 3%;
+    padding: 1%;
+   
+}
+
+.comment-card:hover {
+    border-left: solid 3px #ccc;
+}
+
+.upvotes {
+    font-size: 0.85rem;
+}
+
+#comment-arrow-icon {
+    color: #ff4500;
+    height: 0.75rem;
+}
+
+.comments-list {
+    list-style-type: none;
+}
+
+.comment-author {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.reply {
+    padding-left: 4%;
+    padding-top: 2%;
+}

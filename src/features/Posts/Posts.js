@@ -34,8 +34,10 @@ export function Posts() {
 
     return postsList.map( element => {
         return (
-            <Post postData={element} key={element.id} />
+            <Post postData={element} key={element.name} />
         )
-    })
+    }
+    
+    )
 
 }

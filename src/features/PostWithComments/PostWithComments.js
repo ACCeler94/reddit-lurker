@@ -7,6 +7,7 @@ import { selectSelectedPost } from "../Posts/postsSlice";
 import { Loader } from "../../components/Loader/Loader";
 import "./PostWithComments.css"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { ImArrowUp } from "react-icons/im"
 
 export function PostWithComments(props) {
     
@@ -15,10 +16,35 @@ export function PostWithComments(props) {
     const loadingComments = useSelector(isLoadingComments);
     const selectedPost = useSelector(selectSelectedPost)
     const permalink = selectedPost.permalink
+    const listOfComments = commentsList
 
     useEffect(() => {
         dispatch(fetchComments(permalink));
-      }, [permalink]);
+      }, [dispatch, permalink]);
+
+
+   
+
+
+      // function for rendering comment's replies
+    const renderReplies = (comment) =>{
+        if(comment.data.replies){
+            return (
+                <div className="reply">
+                    {comment.data.replies.data.children.map(reply => {
+                        return (
+                            <div className="comment-card">
+                                <span className="comment-author">{reply.data.author}</span>
+                                <ReactMarkdown>{reply.data.body}</ReactMarkdown>
+                                <div className="upvotes">
+                                    <ImArrowUp id="comment-arrow-icon" /> 
+                                    {reply.data.score}
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+            )}}
 
 
       if(loadingComments){
@@ -39,9 +65,13 @@ export function PostWithComments(props) {
              <ul className="comments-list">
                 {commentsList.map(comment => {
                     return (
-                        <li key={comment.id}>
-                            <span className="comment-author">{comment.author}</span>
-                            <ReactMarkdown>{comment.body}</ReactMarkdown>
+                        <li key={comment.data.id} className="comment">
+                            <div className="comment-card">
+                                <span className="comment-author">{comment.data.author}</span>
+                                <ReactMarkdown>{comment.data.body}</ReactMarkdown>
+                                <div className="upvotes"><ImArrowUp id="comment-arrow-icon" /> {comment.data.score}</div>
+                                {renderReplies(comment)}  
+                            </div>
                         </li>
                     )
                 })}

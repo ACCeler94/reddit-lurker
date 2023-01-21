@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPosts } from "../../api/redditApi";
+import { getMorePosts, getPosts } from "../../api/redditApi";
 
 export const postsSlice = createSlice({
     name: "posts",
@@ -9,7 +9,8 @@ export const postsSlice = createSlice({
         isLoadingPosts: false,
         posts: [],
         selectedPostData: {},
-        showPostWithComments: false
+        showPostWithComments: false,
+        isLoadingMorePosts: false
     },
     reducers: {
         startGetPosts(state){
@@ -32,18 +33,28 @@ export const postsSlice = createSlice({
         selectPost(state, action){
             state.selectedPostData = action.payload;
             state.showPostWithComments = true;
+        },
+        startGetMorePosts(state){
+            state.isLoadingMorePosts = true;
+            state.hasError = false;
+        },
+        getMorePostsSuccess(state, action){
+            state.isLoadingMorePosts = false;
+            state.hasError = false;
+            state.posts = [...state.posts, ...action.payload]
         }
     }
 })
 
-export const { startGetPosts, getPostsSuccess, getPostsFailed, selectSubreddit, selectPost } = postsSlice.actions
+export const { startGetPosts, getPostsSuccess, getPostsFailed, selectSubreddit, selectPost, startGetMorePosts, getMorePostsSuccess } = postsSlice.actions
 
 
 export const selectSelectedSubreddit = (state) => state.posts.selectedSubreddit;    
 export const selectPosts = (state) => state.posts.posts;
 export const isLoadingPosts = (state) => state.posts.isLoadingPosts;
 export const selectSelectedPost = (state) => state.posts.selectedPostData;
-export const showPostWithComments = (state) => state.posts.showPostWithComments
+export const showPostWithComments = (state) => state.posts.showPostWithComments;
+export const isLoadingMorePosts = (state) => state.posts.isLoadingMorePosts;
 
 export default postsSlice.reducer;
 
@@ -57,3 +68,13 @@ export const fetchPosts = (selectedSubreddit) => async (dispatch) => {
     } catch (error) {
         dispatch(getPostsFailed())
     }}
+
+    // thunk for fetching more posts from selected subreddit
+    export const fetchMorePosts = (selectedSubreddit, lastPostId) => async (dispatch) => {
+        try {
+            dispatch(startGetMorePosts());
+            const postsList = await getMorePosts(selectedSubreddit, lastPostId);
+            dispatch(getMorePostsSuccess(postsList))
+        } catch (error) {
+            dispatch(getPostsFailed())
+        }}
