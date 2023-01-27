@@ -19,7 +19,7 @@ export function Post(props){
     // event handler for getting post props
     const postClickHandler = () =>{
         dispatch(selectPost(props.postData))
-        console.log(props.postData)
+        
     }
 
 

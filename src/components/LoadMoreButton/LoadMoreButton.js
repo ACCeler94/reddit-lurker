@@ -15,8 +15,6 @@ export function LoadMoreButton() {
     const loadMorePostsClickHandler = () =>{
       const lastPostName = posts[posts.length -1].name
       dispatch(fetchMorePosts(selectedSubreddit,lastPostName))
-      console.log(posts)
-      console.log(lastPostName)
     }
   
 

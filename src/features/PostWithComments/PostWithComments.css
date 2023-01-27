@@ -51,3 +51,13 @@
     padding-left: 4%;
     padding-top: 2%;
 }
+
+.show-all-replies {
+    color: #014980;
+    cursor: pointer;
+}
+
+.show-more-replies-arrow {
+    height: 15px;
+    width: 20px;
+}

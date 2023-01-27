@@ -4,6 +4,7 @@ import { Loader } from "../../components/Loader/Loader";
 import { Post } from "../../components/Post/Post";
 import { PostWithComments } from "../PostWithComments/PostWithComments";
 import { fetchPosts, isLoadingPosts, selectPosts, selectSelectedSubreddit, selectSelectedPost, showPostWithComments } from "./postsSlice";
+import "./Posts.css"
 
 export function Posts() {
     const dispatch = useDispatch();
@@ -19,8 +20,8 @@ export function Posts() {
 
     if(isLoading){
         return (
-            <div className="posts-loader" style={{margin: "auto"}}>
-            <h3 style={{margin: "5% auto", textAlign: "center"}}>Loading Posts...</h3>
+            <div className="posts-loader">
+            <h3>Loading Posts...</h3>
             <Loader />
             </div>
         )

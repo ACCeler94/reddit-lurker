@@ -42,11 +42,15 @@ export const postsSlice = createSlice({
             state.isLoadingMorePosts = false;
             state.hasError = false;
             state.posts = [...state.posts, ...action.payload]
+        },
+        getMorePostsFailed(state){
+            state.isLoadingMorePosts = false;
+            state.hasError = true;
         }
     }
 })
 
-export const { startGetPosts, getPostsSuccess, getPostsFailed, selectSubreddit, selectPost, startGetMorePosts, getMorePostsSuccess } = postsSlice.actions
+export const { startGetPosts, getPostsSuccess, getPostsFailed, selectSubreddit, selectPost, startGetMorePosts, getMorePostsSuccess, getMorePostsFailed } = postsSlice.actions
 
 
 export const selectSelectedSubreddit = (state) => state.posts.selectedSubreddit;    
@@ -76,5 +80,5 @@ export const fetchPosts = (selectedSubreddit) => async (dispatch) => {
             const postsList = await getMorePosts(selectedSubreddit, lastPostId);
             dispatch(getMorePostsSuccess(postsList))
         } catch (error) {
-            dispatch(getPostsFailed())
+            dispatch(getMorePostsFailed())
         }}
