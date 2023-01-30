@@ -1,5 +1,5 @@
 .search-results {
-    display: block;
+    display: flex;
     z-index: 999;
     grid-column: 2/3;
     position: absolute;
@@ -10,6 +10,7 @@
     border-top: none;
     border-radius: 4px;
     top: 0;
+    min-height: 5em;
     max-height: 24em;
     overflow-y: auto;
 }
@@ -44,9 +45,6 @@
     background-color: var(--color-on-hover);
 }
 
-input:focus ~ .search-results {
-    display: flex;
-}
 
 
 .sub-info {
@@ -69,4 +67,12 @@ input:focus ~ .search-results {
     font-size: 14px;
     margin-bottom: 0px;
     margin-left: 2%;
+}
+
+.nsfw-indicator {
+    color: #FF0000;
+    font-size: 0.7em;
+    padding: 0.5% 1%;
+    border: 2px solid #FF0000;
+    border-radius: 15px;
 }

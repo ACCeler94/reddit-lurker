@@ -8,7 +8,8 @@ export const searchBarSlice = createSlice({
         searchQuery: "",
         searchResults: [],
         isLoadingResults: false,
-        hasError: false
+        hasError: false,
+        showingSearchResults: false
     },
     reducers: {
         startGetResults(state){
@@ -26,15 +27,22 @@ export const searchBarSlice = createSlice({
         },
         changeSearchQuery(state, action){
             state.searchQuery = action.payload;
+        },
+        showSearchResults(state){
+            state.showingSearchResults = true;
+        },
+        hideSearchResults(state){
+            state.showingSearchResults = false;
         }
     }
 })
 
-export const { startGetResults, getResultsSuccess, getResultsFailed, changeSearchQuery } = searchBarSlice.actions;
+export const { startGetResults, getResultsSuccess, getResultsFailed, changeSearchQuery, hideSearchResults, showSearchResults } = searchBarSlice.actions;
 
 export const selectSearchQuery = (state) => state.searchBar.searchQuery;
 export const selectSearchResults = (state) => state.searchBar.searchResults;
 export const isLoadingSearchResults = (state) => state.searchBar.isLoadingResults;
+export const isShowingSearchResults = (state) => state.searchBar.showingSearchResults;
 
 export default searchBarSlice.reducer;
 
