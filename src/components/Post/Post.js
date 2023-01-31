@@ -5,7 +5,7 @@ import { RiShareBoxLine } from  "react-icons/ri"
 import './Post.css'
 import ReactMarkdown from "react-markdown";
 import { linkShortener } from "../../utilities/linkShortener";
-import { selectPost } from "../../features/Posts/postsSlice";
+import { selectPost } from "../Posts/postsSlice";
 import { useDispatch } from "react-redux";
 
 

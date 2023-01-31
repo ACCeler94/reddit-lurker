@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { hideSearchResults, isShowingSearchResults, selectSearchResults } from "../../features/SearchBar/searchBarSlice";
+import { hideSearchResults, isShowingSearchResults, selectSearchResults } from "../SearchBar/searchBarSlice";
 import "./SearchResults.css"
-import { selectSubreddit } from "../../features/Posts/postsSlice";
+import { selectSubreddit } from "../Posts/postsSlice";
 
 export function SearchResults() {
     const dispatch = useDispatch();

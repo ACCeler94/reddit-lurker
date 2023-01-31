@@ -1,6 +1,6 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchMorePosts, isLoadingMorePosts, selectPosts, selectSelectedSubreddit } from "../../features/Posts/postsSlice";
+import { fetchMorePosts, isLoadingMorePosts, selectPosts, selectSelectedSubreddit } from "../Posts/postsSlice";
 import "./LoadMoreButton.css"
 import { Loader } from "../Loader/Loader";
 

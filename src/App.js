@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import { Header } from "./features/Header/Header";
-import { TopList } from './features/TopList/TopList';
-import { Posts } from './features/Posts/Posts';
+import { Header } from "./components/Header/Header";
+import { TopList } from './components/TopList/TopList';
+import { Posts } from './components/Posts/Posts';
 import { LoadMoreButton } from './components/LoadMoreButton/LoadMoreButton';
-import { SearchResults } from './components/SearchResults/SearchResults';
+
 
 
 

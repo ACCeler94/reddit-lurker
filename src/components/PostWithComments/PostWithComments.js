@@ -1,10 +1,10 @@
 import React from "react";
-import { Post } from "../../components/Post/Post";
+import { Post } from "../Post/Post";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchComments, isLoadingComments, selectComments } from "./postWithCommentsSlice";
 import { selectSelectedPost, showPostWithComments } from "../Posts/postsSlice";
-import { Loader } from "../../components/Loader/Loader";
+import { Loader } from "../Loader/Loader";
 import "./PostWithComments.css"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ImArrowUp } from "react-icons/im"

@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import topListReducer from '../features/TopList/topListSlice';
-import postsReducer from '../features/Posts/postsSlice'
-import postWithCommentsReducer  from '../features/PostWithComments/postWithCommentsSlice';
-import searchBarReducer from '../features/SearchBar/searchBarSlice'
+import topListReducer from '../components/TopList/topListSlice';
+import postsReducer from '../components/Posts/postsSlice'
+import postWithCommentsReducer  from '../components/PostWithComments/postWithCommentsSlice';
+import searchBarReducer from '../components/SearchBar/searchBarSlice'
 
 
 export const store = configureStore({

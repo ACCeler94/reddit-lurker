@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { selectTopList, isLoadingTopList, fetchTopList } from "./topListSlice";
 import { useDispatch, useSelector} from "react-redux";
-import { Loader } from "../../components/Loader/Loader";
+import { Loader } from "../Loader/Loader";
 import './TopList.css'
 import { selectSubreddit} from "../Posts/postsSlice";
 

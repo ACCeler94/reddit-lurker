@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Loader } from "../../components/Loader/Loader";
-import { Post } from "../../components/Post/Post";
+import { Loader } from "../Loader/Loader";
+import { Post } from "../Post/Post";
 import { PostWithComments } from "../PostWithComments/PostWithComments";
 import { fetchPosts, isLoadingPosts, selectPosts, selectSelectedSubreddit, selectSelectedPost, showPostWithComments } from "./postsSlice";
 import "./Posts.css"
