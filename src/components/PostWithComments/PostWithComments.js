@@ -9,6 +9,7 @@ import "./PostWithComments.css"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ImArrowUp } from "react-icons/im"
 import { HiArrowNarrowRight } from "react-icons/hi";
+import { numberConverter } from "../../helpers/numberConverter";
 
 
 
@@ -41,7 +42,7 @@ export function PostWithComments(props) {
                                 <ReactMarkdown>{reply.data.body}</ReactMarkdown>
                                 <div className="upvotes">
                                     <ImArrowUp id="comment-arrow-icon" /> 
-                                    {reply.data.score}
+                                    {numberConverter(reply.data.score)}
                                 </div>
                                 {showMoreReplies(reply)}
                             </div>
@@ -90,7 +91,7 @@ export function PostWithComments(props) {
                             <div className="comment-card">
                                 <span className="comment-author">{comment.data.author}</span>
                                 <ReactMarkdown>{comment.data.body}</ReactMarkdown>
-                                <div className="upvotes"><ImArrowUp id="comment-arrow-icon" /> {comment.data.score}</div>
+                                <div className="upvotes"><ImArrowUp id="comment-arrow-icon" /> {numberConverter(comment.data.score)}</div>
                                 {renderReplies(comment)}  
                             </div>
                         </li>

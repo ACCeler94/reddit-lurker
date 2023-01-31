@@ -1,46 +1,30 @@
-# Getting Started with Create React App and Redux
+# Reddit Lurker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+**Have you ever wanted to use Reddit but without all those social aspects? If You don't like posting, writing comments or interacting with other people - in other words: You like lurking - then Reddit Lurker is perfect for Your needs.**
 
-## Available Scripts
 
-In the project directory, you can run:
+## What is it?
 
-### `npm start`
+Reddit Lurker is a minimalistic Reddit.com clone project build using Reddit JSON API. The goal of this project was to create a familiar experience but without many of Reddit.com quirks and social media aspects.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ - stripped of all human to human interactions - You consume content, not create it
+ - top subreddits available for quick access
+ - familiar UI design
+ - dark mode
+ - open on reddit button - just in case You would like to become a meaningful redditor and add some comments
+ - ad free
+ - NSFW content without logging in
 
-### `npm test`
+---
+**Tech Stack:**
+ - React
+ - Redux
+ - CSS
+ - [React Markdown](https://github.com/remarkjs/react-markdown)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Known issues:**
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+ -  Videos play without any sound - Reddit.com separates audio and video in its files and uses custom video player to combine those two together. Solution would be to find or build similar video player
+ - Galleries show link or only the first picture - galleries are fetched in a completely different format. To solve this issue separate method of displaying and fetching content would need to be build. Right now these are out of scope for this project

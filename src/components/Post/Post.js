@@ -4,10 +4,10 @@ import {  BiCommentDetail } from "react-icons/bi";
 import { RiShareBoxLine } from  "react-icons/ri"
 import './Post.css'
 import ReactMarkdown from "react-markdown";
-import { linkShortener } from "../../utilities/linkShortener";
+import { linkShortener } from "../../helpers/linkShortener";
 import { selectPost } from "../Posts/postsSlice";
 import { useDispatch } from "react-redux";
-
+import { numberConverter } from "../../helpers/numberConverter";
 
 
 
@@ -99,11 +99,11 @@ export function Post(props){
                 <div className="extra-container">
                     <div className="arrow-container">
                         <ImArrowUp id="arrow-icon" />
-                        <span className="votes-number">{props.postData.score}</span>
+                        <span className="votes-number">{numberConverter(props.postData.score)}</span>
                     </div>
                     <div className="comment-icon-container" onClick={postClickHandler}>
                         <BiCommentDetail id="comment-icon" />
-                        <span className="comments-number">{props.postData.num_comments}</span>
+                        <span className="comments-number">{numberConverter(props.postData.num_comments)}</span>
                     </div>
                     <div>
                         <a href={"https://www.reddit.com" + props.postData.permalink} className="redirect-container" target="_blank">
