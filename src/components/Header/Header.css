@@ -5,8 +5,8 @@ header {
     grid-gap: 16px;
     align-content: center;
     padding: 0 3%;
-    border-bottom: 2px solid #F6F7F8;
-    background-color: #fff;
+    border-bottom: 2px solid var(--light-border);
+    background-color: var(--background-color);
     position: sticky;
     top: 0;
     max-height: 4em;

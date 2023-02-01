@@ -5,8 +5,8 @@
     position: absolute;
     margin-top: 70px;
     width: 100%;
-    background-color: #fff;
-    border: 2px solid #F6F7F8;
+    background-color: var(--background-color);
+    border: 2px solid var(--light-border);
     border-top: none;
     border-radius: 4px;
     top: 0;
@@ -29,7 +29,7 @@
 
 .subreddit-result {
     display: flex;
-    border: 1.5px solid #F6F7F8;
+    border: 1.5px solid var(--light-border);
     height: 4em;
     align-items: center;
     overflow-wrap: anywhere;

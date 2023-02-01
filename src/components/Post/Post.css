@@ -2,8 +2,8 @@
     display: flex;
     max-width: 85%;
     margin: 4% auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 36px;
     padding-left: 8px;
@@ -15,7 +15,7 @@
 }
 
 .content a {
-    color: #6c70e3;
+    color: var(--url-color);
 }
 
 .media-container {
@@ -109,7 +109,7 @@
     width: 100%;
     padding: 5px 0;
     text-decoration: none;
-    color: #000;
+    color: var(--default-color);
 }
 
 .redirect-container:hover {
@@ -136,7 +136,7 @@
 }
 
 .author {
-    color:rgb(80, 79, 79);
+    color: var(--author-color);
 }
 
 .link-container {
@@ -147,7 +147,7 @@
     display: flex;
     align-items: center;
     padding: 2.5%;
-    border: 1px solid #DAE0E6;
+    border: 1px solid var(--border-color);
     border-radius: 15px;
 }
 

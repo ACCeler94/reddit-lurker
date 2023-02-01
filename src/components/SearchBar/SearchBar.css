@@ -7,12 +7,13 @@
 .search-bar input{
     border: none;
     flex-grow: 1;
-    background-color: #F6F7F8;
-    border: 1px solid #edeff1;
+    background-color: var(--input-background-color);
+    border: 1px solid var(--light-border);
     border-radius: 1.25em;
     height: 2rem;
     padding: 0 3%;
     font-size: 16px;
+    color: var(--default-color);
 }
 
 .search-bar input:focus {

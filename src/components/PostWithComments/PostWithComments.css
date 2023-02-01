@@ -10,8 +10,8 @@
     display: flex;
     max-width: 85%;
     margin: -2% auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 36px;
     padding-left: 8px;
@@ -19,14 +19,14 @@
 
 .comment-card {
     font-size: 16px;
-    border-left: solid 1px #ccc;
+    border-left: solid 1px var(--border-color);
     margin-bottom: 3%;
     padding: 1%;
    
 }
 
 .comment-card:hover {
-    border-left: solid 3px #ccc;
+    border-left: solid 3px var(--border-color);
 }
 
 .upvotes {
