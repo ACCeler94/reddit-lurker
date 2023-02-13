@@ -5,17 +5,23 @@ import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements } from 'react-router-dom';
+import { PostWithComments } from './components/PostWithComments/PostWithComments';
+import { Posts } from './components/Posts/Posts';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-]);
+
+
+const router = createBrowserRouter(createRoutesFromElements(
+  <Route path="/" element={ <App />}>
+    <Route index element={ <Posts /> } />
+    <Route path='/:subreddit/:key' element={<PostWithComments />} />
+    <Route path='/:subreddit' element={ <Posts /> } />
+  </Route>
+))
+
 
 root.render(
   <React.StrictMode>

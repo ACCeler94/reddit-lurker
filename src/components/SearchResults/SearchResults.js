@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideSearchResults, isShowingSearchResults, selectSearchResults } from "../SearchBar/searchBarSlice";
 import "./SearchResults.css"
 import { selectSubreddit } from "../Posts/postsSlice";
+import { Link } from "react-router-dom";
 
 export function SearchResults() {
     const dispatch = useDispatch();
@@ -43,14 +44,17 @@ export function SearchResults() {
                     {results.slice(0,9).map(element => {
                         const subInfo = element;
                         return (
-                            <li className="subreddit-result" key={subInfo.name} id={subInfo.display_name} onClick={()=> {resultClickHandler(subInfo.display_name)}}>
-                                <div className="sub-info">
-                                    <img src={subInfo.icon_img || "https://styles.redditmedia.com/t5_2u0xf/styles/communityIcon_2mfivuevv58a1.png?width=256&s=e108747628c6581f50cbd9514fb45f2e61826f51" } alt="subreddit-icon" className="result-sub-icon" />
-                                    <h4 className="sub-name">{subInfo.display_name}</h4>
-                                    { subInfo.over18 && nsfwIndicator }
-                                </div>
-                                <p className="short-description">{subInfo.title}</p>
-                            </li>
+                            <Link to={`${element.display_name}`} >
+                                <li className="subreddit-result" key={subInfo.name} id={subInfo.display_name} onClick={()=> {resultClickHandler(subInfo.display_name)}}>
+                                    <div className="sub-info">
+                                        <img src={subInfo.icon_img || "https://styles.redditmedia.com/t5_2u0xf/styles/communityIcon_2mfivuevv58a1.png?width=256&s=e108747628c6581f50cbd9514fb45f2e61826f51" } alt="subreddit-icon" className="result-sub-icon" />
+                                        <h4 className="sub-name">{subInfo.display_name}</h4>
+                                        { subInfo.over18 && nsfwIndicator }
+                                    </div>
+                                    <p className="short-description">{subInfo.title}</p>
+                                </li>
+                            </Link>
+                    
                         )
                     })}
                 </ul>

@@ -32,7 +32,6 @@ export const postsSlice = createSlice({
         },
         selectPost(state, action){
             state.selectedPostData = action.payload;
-            state.showPostWithComments = true;
         },
         startGetMorePosts(state){
             state.isLoadingMorePosts = true;

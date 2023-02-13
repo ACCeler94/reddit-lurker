@@ -5,6 +5,7 @@ import { Post } from "../Post/Post";
 import { PostWithComments } from "../PostWithComments/PostWithComments";
 import { fetchPosts, isLoadingPosts, selectPosts, selectSelectedSubreddit, selectSelectedPost, showPostWithComments } from "./postsSlice";
 import "./Posts.css"
+import { Link, useParams } from "react-router-dom";
 
 export function Posts() {
     const dispatch = useDispatch();
@@ -13,10 +14,11 @@ export function Posts() {
     const selectedSubreddit = useSelector(selectSelectedSubreddit);
     const clickedPost = useSelector(selectSelectedPost)
     const showOnlyPostWithComments = useSelector(showPostWithComments)
+    const params = useParams()
 
     useEffect(() => {
         dispatch(fetchPosts(selectedSubreddit))
-    }, [dispatch, selectedSubreddit])
+    }, [dispatch, selectedSubreddit,params])
 
     if(isLoading){
         return (

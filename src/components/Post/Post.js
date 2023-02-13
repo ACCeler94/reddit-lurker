@@ -8,6 +8,8 @@ import { linkShortener } from "../../helpers/linkShortener";
 import { selectPost } from "../Posts/postsSlice";
 import { useDispatch } from "react-redux";
 import { numberConverter } from "../../helpers/numberConverter";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 
@@ -22,6 +24,7 @@ export function Post(props){
         
     }
 
+    const { subreddit } = useParams();
 
     // statements for rendering different types of content
 
@@ -94,17 +97,19 @@ export function Post(props){
     
     // statement for rendering constant post elements
     return (
-        <article id={props.postData.id}>
+        <article id={props.postData.name}>
             <div className="post-wrapper">
                 <div className="extra-container">
                     <div className="arrow-container">
                         <ImArrowUp id="arrow-icon" />
                         <span className="votes-number">{numberConverter(props.postData.score)}</span>
                     </div>
-                    <div className="comment-icon-container" onClick={postClickHandler}>
-                        <BiCommentDetail id="comment-icon" />
-                        <span className="comments-number">{numberConverter(props.postData.num_comments)}</span>
-                    </div>
+                    <Link to={subreddit ? `/${props.postData.name}` : `${props.postData.subreddit}/${props.postData.name}`}> {/* line to prevent using double subreddit params when going to post from main site example: http://localhost:3000/worldnews/worldnews/t3_110yv98 */}
+                        <div className="comment-icon-container" onClick={postClickHandler}>
+                            <BiCommentDetail id="comment-icon" />
+                            <span className="comments-number">{numberConverter(props.postData.num_comments)}</span>
+                        </div>
+                    </Link>
                     <div>
                         <a href={"https://www.reddit.com" + props.postData.permalink} className="redirect-container" target="_blank">
                             <RiShareBoxLine id="redirect-icon" />
@@ -117,7 +122,9 @@ export function Post(props){
                     <span className="subreddit-name">
                         {props.postData.subreddit_name_prefixed}
                     </span>
-                    <h3 className="post-title" > {props.postData.title} </h3>
+                    <Link to={subreddit ? `${props.postData.name}` : `${props.postData.subreddit}/${props.postData.name}`}> {/* line to prevent using double subreddit params when going to post from main site example: http://localhost:3000/worldnews/worldnews/t3_110yv98 */}
+                        <h3 className="post-title" > {props.postData.title} </h3>
+                    </Link>
                     <span className="author">Posted by: {props.postData.author}</span>
                 </div>
                 <div className="content">

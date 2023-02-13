@@ -10,11 +10,12 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ImArrowUp } from "react-icons/im"
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { numberConverter } from "../../helpers/numberConverter";
+import { useParams } from "react-router-dom";
 
 
 
 
-export function PostWithComments(props) {
+export function PostWithComments() {
     
     const dispatch = useDispatch();
     const commentsList = useSelector(selectComments);
@@ -22,10 +23,12 @@ export function PostWithComments(props) {
     const selectedPost = useSelector(selectSelectedPost)
     const permalink = selectedPost.permalink
     const showOnlyPostWithComments = useSelector(showPostWithComments)
+    const postData = useSelector(selectSelectedPost)
+    const params = useParams()
 
     useEffect(() => {
         dispatch(fetchComments(permalink));
-      }, [dispatch, permalink]);
+      }, [dispatch, permalink, params]);
 
 
 
@@ -67,7 +70,7 @@ export function PostWithComments(props) {
       if(loadingComments){
         return (
             <>
-                <Post postData = {props.postData} />
+                <Post postData = {postData} />
                 <h4 className="loading-comment-text"> Loading Comments </h4>
                 <Loader className="comment-spinner" />
             </>
@@ -81,7 +84,7 @@ export function PostWithComments(props) {
 
     return (
         <>
-            <Post postData = {props.postData} />
+            <Post postData = {postData} />
             <div className="comments-container" id="comments-section">
              <ul className="comments-list">
                 {commentsList.map(comment => {

@@ -4,6 +4,7 @@ import { useDispatch, useSelector} from "react-redux";
 import { Loader } from "../Loader/Loader";
 import './TopList.css'
 import { selectSubreddit} from "../Posts/postsSlice";
+import { NavLink } from "react-router-dom";
 
 export function TopList() {
     const dispatch = useDispatch();
@@ -36,13 +37,15 @@ export function TopList() {
             <ul className="subreddit-list">
                 {topList.slice(0, 8).map(element => {
                     return (
-                    <li 
-                        key={element.id} 
-                        id={element.display_name} 
-                        onClick={topListClickHandler} >
-                            <img src={element.icon_img || "https://styles.redditmedia.com/t5_2u0xf/styles/communityIcon_2mfivuevv58a1.png?width=256&s=e108747628c6581f50cbd9514fb45f2e61826f51" } alt="subreddit-icon" className="subreddit-icon" />
-                            {element.display_name}
+                    <NavLink to={`${element.display_name}`} >
+                        <li 
+                            key={element.id} 
+                            id={element.display_name} 
+                            onClick={topListClickHandler} >
+                                <img src={element.icon_img || "https://styles.redditmedia.com/t5_2u0xf/styles/communityIcon_2mfivuevv58a1.png?width=256&s=e108747628c6581f50cbd9514fb45f2e61826f51" } alt="subreddit-icon" className="subreddit-icon" />
+                                {element.display_name}
                         </li>
+                    </NavLink>
                 )})}
             </ul>
         </div>

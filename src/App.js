@@ -4,6 +4,7 @@ import { Header } from "./components/Header/Header";
 import { TopList } from './components/TopList/TopList';
 import { Posts } from './components/Posts/Posts';
 import { LoadMoreButton } from './components/LoadMoreButton/LoadMoreButton';
+import { Outlet } from 'react-router-dom';
 
 
 
@@ -15,8 +16,7 @@ function App() {
     <>
       <Header />
       <main>
-        <Posts />
-        <LoadMoreButton />
+      <Outlet />
       </main>
       <aside>
         <TopList />
