@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getMorePosts, getPosts } from "../../api/redditApi";
 
+
+
 export const postsSlice = createSlice({
     name: "posts",
     initialState: {
@@ -59,6 +61,8 @@ export const selectSelectedPost = (state) => state.posts.selectedPostData;
 export const showPostWithComments = (state) => state.posts.showPostWithComments;
 export const isLoadingMorePosts = (state) => state.posts.isLoadingMorePosts;
 
+
+
 export default postsSlice.reducer;
 
 
@@ -73,7 +77,7 @@ export const fetchPosts = (selectedSubreddit) => async (dispatch) => {
     }}
 
     // thunk for fetching more posts from selected subreddit
-    export const fetchMorePosts = (selectedSubreddit, lastPostId) => async (dispatch) => {
+    export const fetchMorePosts = (selectedSubreddit, lastPostId, paramsSubreddit) => async (dispatch) => {
         try {
             dispatch(startGetMorePosts());
             const postsList = await getMorePosts(selectedSubreddit, lastPostId);

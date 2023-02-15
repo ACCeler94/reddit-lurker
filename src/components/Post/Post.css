@@ -101,6 +101,10 @@
     color: #ff4500;
 }
 
+.comment-icon-link {
+    width: 100%;
+}
+
 .redirect-container {
     display: flex;
     flex-direction: column;

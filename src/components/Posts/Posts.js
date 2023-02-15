@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../Loader/Loader";
 import { Post } from "../Post/Post";
 import { PostWithComments } from "../PostWithComments/PostWithComments";
-import { fetchPosts, isLoadingPosts, selectPosts, selectSelectedSubreddit, selectSelectedPost, showPostWithComments } from "./postsSlice";
+import { fetchPosts, isLoadingPosts, selectPosts, selectSelectedSubreddit, selectSelectedPost, showPostWithComments, selectSubreddit} from "./postsSlice";
 import "./Posts.css"
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export function Posts() {
     const dispatch = useDispatch();
@@ -14,11 +14,18 @@ export function Posts() {
     const selectedSubreddit = useSelector(selectSelectedSubreddit);
     const clickedPost = useSelector(selectSelectedPost)
     const showOnlyPostWithComments = useSelector(showPostWithComments)
-    const params = useParams()
+    const { subreddit } = useParams()
 
     useEffect(() => {
         dispatch(fetchPosts(selectedSubreddit))
-    }, [dispatch, selectedSubreddit,params])
+    }, [dispatch, selectedSubreddit,subreddit])
+
+
+   // change state if params change with an exception of homepage
+    if(selectedSubreddit !== subreddit && subreddit){
+        dispatch(selectSubreddit(subreddit))
+    }
+
 
     if(isLoading){
         return (

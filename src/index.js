@@ -8,6 +8,7 @@ import './index.css';
 import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements } from 'react-router-dom';
 import { PostWithComments } from './components/PostWithComments/PostWithComments';
 import { Posts } from './components/Posts/Posts';
+import { LoadMoreButton } from './components/LoadMoreButton/LoadMoreButton';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -16,9 +17,19 @@ const root = createRoot(container);
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={ <App />}>
-    <Route index element={ <Posts /> } />
+    <Route index element={ (
+    <>
+    <Posts />
+    <LoadMoreButton />
+    </>
+    ) } />
     <Route path='/:subreddit/:key' element={<PostWithComments />} />
-    <Route path='/:subreddit' element={ <Posts /> } />
+    <Route path='/:subreddit' element={(
+        <>
+        <Posts />
+        <LoadMoreButton />
+        </>
+      )} />
   </Route>
 ))
 

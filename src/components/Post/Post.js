@@ -19,12 +19,18 @@ export function Post(props){
     const dispatch = useDispatch();
 
     // event handler for getting post props
-    const postClickHandler = () =>{
+    const postClickHandler = () => {
         dispatch(selectPost(props.postData))
         
     }
 
-    const { subreddit } = useParams();
+    const { subreddit, key } = useParams();
+
+    const linkClickHandler = (event) => {
+        if(key){
+            event.preventDefault()
+        }
+    }
 
     // statements for rendering different types of content
 
@@ -104,7 +110,7 @@ export function Post(props){
                         <ImArrowUp id="arrow-icon" />
                         <span className="votes-number">{numberConverter(props.postData.score)}</span>
                     </div>
-                    <Link to={subreddit ? `/${props.postData.name}` : `${props.postData.subreddit}/${props.postData.name}`}> {/* line to prevent using double subreddit params when going to post from main site example: http://localhost:3000/worldnews/worldnews/t3_110yv98 */}
+                    <Link to={subreddit ? `${props.postData.name}` : `${props.postData.subreddit}/${props.postData.name}`} className="comment-icon-link" onClick={linkClickHandler} > {/* line to prevent using double subreddit params when going to post from main site example: http://localhost:3000/worldnews/worldnews/t3_110yv98 */}
                         <div className="comment-icon-container" onClick={postClickHandler}>
                             <BiCommentDetail id="comment-icon" />
                             <span className="comments-number">{numberConverter(props.postData.num_comments)}</span>
@@ -122,7 +128,7 @@ export function Post(props){
                     <span className="subreddit-name">
                         {props.postData.subreddit_name_prefixed}
                     </span>
-                    <Link to={subreddit ? `${props.postData.name}` : `${props.postData.subreddit}/${props.postData.name}`}> {/* line to prevent using double subreddit params when going to post from main site example: http://localhost:3000/worldnews/worldnews/t3_110yv98 */}
+                    <Link to={subreddit ? `${props.postData.name}` : `${props.postData.subreddit}/${props.postData.name}`} onClick={linkClickHandler} > {/* line to prevent using double subreddit params when going to post from main site example: http://localhost:3000/worldnews/worldnews/t3_110yv98 */}
                         <h3 className="post-title" > {props.postData.title} </h3>
                     </Link>
                     <span className="author">Posted by: {props.postData.author}</span>

@@ -39,6 +39,10 @@ body {
   background-color: var(--background-color);
 }
 
+a {
+  color: var(--default-color);
+  text-decoration: none;
+}
 
 #root {
   display: grid;
