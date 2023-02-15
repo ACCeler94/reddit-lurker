@@ -37,7 +37,7 @@ export function TopList() {
             <ul className="subreddit-list">
                 {topList.slice(0, 8).map(element => {
                     return (
-                    <NavLink to={`${element.display_name}`} >
+                    <NavLink to={`r/${element.display_name}`} >
                         <li 
                             key={element.id} 
                             id={element.display_name} 

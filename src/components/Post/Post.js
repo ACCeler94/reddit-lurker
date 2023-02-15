@@ -5,11 +5,12 @@ import { RiShareBoxLine } from  "react-icons/ri"
 import './Post.css'
 import ReactMarkdown from "react-markdown";
 import { linkShortener } from "../../helpers/linkShortener";
-import { selectPost } from "../Posts/postsSlice";
-import { useDispatch } from "react-redux";
+import { selectPost, selectSelectedSubreddit } from "../Posts/postsSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { numberConverter } from "../../helpers/numberConverter";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { selectSubreddit } from "../Posts/postsSlice";
 
 
 
@@ -26,10 +27,16 @@ export function Post(props){
 
     const { subreddit, key } = useParams();
 
+    // deactivating link when post with comments is shown
     const linkClickHandler = (event) => {
         if(key){
             event.preventDefault()
         }
+    }
+
+    const selectedSubreddit = useSelector(selectSelectedSubreddit);
+    if(selectedSubreddit !== subreddit && subreddit){
+        dispatch(selectSubreddit(subreddit))
     }
 
     // statements for rendering different types of content
@@ -110,7 +117,7 @@ export function Post(props){
                         <ImArrowUp id="arrow-icon" />
                         <span className="votes-number">{numberConverter(props.postData.score)}</span>
                     </div>
-                    <Link to={subreddit ? `${props.postData.name}` : `${props.postData.subreddit}/${props.postData.name}`} className="comment-icon-link" onClick={linkClickHandler} > {/* line to prevent using double subreddit params when going to post from main site example: http://localhost:3000/worldnews/worldnews/t3_110yv98 */}
+                    <Link to={`${props.postData.id}`} className="comment-icon-link" >
                         <div className="comment-icon-container" onClick={postClickHandler}>
                             <BiCommentDetail id="comment-icon" />
                             <span className="comments-number">{numberConverter(props.postData.num_comments)}</span>
@@ -126,9 +133,11 @@ export function Post(props){
             <div className="post-container" onClick={postClickHandler} >
                 <div className="post-info">
                     <span className="subreddit-name">
+                      <Link to={`/r/${props.postData.subreddit}`} >
                         {props.postData.subreddit_name_prefixed}
+                      </Link>
                     </span>
-                    <Link to={subreddit ? `${props.postData.name}` : `${props.postData.subreddit}/${props.postData.name}`} onClick={linkClickHandler} > {/* line to prevent using double subreddit params when going to post from main site example: http://localhost:3000/worldnews/worldnews/t3_110yv98 */}
+                    <Link to={`${props.postData.id}`} onClick={linkClickHandler} >
                         <h3 className="post-title" > {props.postData.title} </h3>
                     </Link>
                     <span className="author">Posted by: {props.postData.author}</span>

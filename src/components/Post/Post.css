@@ -49,6 +49,7 @@
 
 .subreddit-name, .author {
     font-size: 0.75em;
+    text-decoration: underline;
 }
 
 

@@ -3,12 +3,11 @@ import { Post } from "../Post/Post";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchComments, isLoadingComments, selectComments } from "./postWithCommentsSlice";
-import { selectSelectedPost, showPostWithComments } from "../Posts/postsSlice";
+import { selectSelectedPost,} from "../Posts/postsSlice";
 import { Loader } from "../Loader/Loader";
 import "./PostWithComments.css"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ImArrowUp } from "react-icons/im"
-import { HiArrowNarrowRight } from "react-icons/hi";
 import { numberConverter } from "../../helpers/numberConverter";
 import { useParams } from "react-router-dom";
 
@@ -22,13 +21,19 @@ export function PostWithComments() {
     const loadingComments = useSelector(isLoadingComments);
     const selectedPost = useSelector(selectSelectedPost)
     const permalink = selectedPost.permalink
-    const showOnlyPostWithComments = useSelector(showPostWithComments)
     const postData = useSelector(selectSelectedPost)
     const params = useParams()
 
+
     useEffect(() => {
+        // refresh? persistent state?
+       { /* if(!permalink && params.key){
+            dispatch(fetchComments(`/r/${params.subreddit}/comments/${params.key}`))
+        } */ }
         dispatch(fetchComments(permalink));
       }, [dispatch, permalink, params]);
+
+
 
 
 
@@ -47,7 +52,7 @@ export function PostWithComments() {
                                     <ImArrowUp id="comment-arrow-icon" /> 
                                     {numberConverter(reply.data.score)}
                                 </div>
-                                {showMoreReplies(reply)}
+                                {renderReplies(reply)}
                             </div>
                         )
                     }
@@ -55,16 +60,6 @@ export function PostWithComments() {
                 </div>
             )}}
 
-
-    const showMoreReplies = (reply) => {
-        if(reply.data.replies){
-            console.log(reply.data.replies)
-            return (
-                <span className="show-all-replies" onClick={() => renderReplies(reply)} >Show more replies <HiArrowNarrowRight className="show-more-replies-arrow" /> </span>
-                
-            )
-        }
-    }
 
 
       if(loadingComments){
@@ -77,8 +72,8 @@ export function PostWithComments() {
         )
       }
 
-      // show content of pinned and moderation posts when they are clicked
-      if(showOnlyPostWithComments && document.getElementById('pinned-post')){
+      // show content of pinned and moderation posts when post is displayed
+      if(params.key && document.getElementById('pinned-post')){
         document.getElementById('pinned-post').style.display = 'block'
       } 
 

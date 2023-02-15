@@ -11,7 +11,6 @@ export const postsSlice = createSlice({
         isLoadingPosts: false,
         posts: [],
         selectedPostData: {},
-        showPostWithComments: false,
         isLoadingMorePosts: false
     },
     reducers: {
@@ -58,7 +57,6 @@ export const selectSelectedSubreddit = (state) => state.posts.selectedSubreddit;
 export const selectPosts = (state) => state.posts.posts;
 export const isLoadingPosts = (state) => state.posts.isLoadingPosts;
 export const selectSelectedPost = (state) => state.posts.selectedPostData;
-export const showPostWithComments = (state) => state.posts.showPostWithComments;
 export const isLoadingMorePosts = (state) => state.posts.isLoadingMorePosts;
 
 

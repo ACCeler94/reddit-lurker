@@ -23,8 +23,8 @@ const router = createBrowserRouter(createRoutesFromElements(
     <LoadMoreButton />
     </>
     ) } />
-    <Route path='/:subreddit/:key' element={<PostWithComments />} />
-    <Route path='/:subreddit' element={(
+    <Route path='/r/:subreddit/:key' element={ <PostWithComments /> } />
+    <Route path='/r/:subreddit' element={(
         <>
         <Posts />
         <LoadMoreButton />
