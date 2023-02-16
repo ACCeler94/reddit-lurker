@@ -12,6 +12,7 @@
 .post-container {
     width: 90%;
 
+
 }
 
 .content a {
@@ -87,12 +88,10 @@
     width: 100%;
     margin-bottom: 1em;
    padding: 5px 0;
-   cursor: pointer;
+
 }
 
-.comment-icon-container:hover {
-    background-color: var(--color-on-hover);
-}
+
 
 #comment-icon {
     margin-bottom: 0.5em;
@@ -159,4 +158,25 @@
 .link-thumbnail {
     height: 80px;
     padding-right: 5%;
+}
+
+.title-link-deactivated {
+    cursor: default;
+}
+
+.comment-icon-link:hover {
+    background-color: var(--color-on-hover);
+}
+
+.comment-icon-link-deactivated {
+    cursor: default;
+    width: 100%;
+}
+
+.comment-icon-link-deactivated:hover {
+    background-color: var(--background-color);
+}
+
+.comment-icon-link-deactivated:hover #comment-icon {
+    color: var(--default-color)
 }

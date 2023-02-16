@@ -14,6 +14,8 @@ import { selectSubreddit } from "../Posts/postsSlice";
 
 
 
+
+
 export function Post(props){
 
     let contentType = props.postData.post_hint;
@@ -117,7 +119,7 @@ export function Post(props){
                         <ImArrowUp id="arrow-icon" />
                         <span className="votes-number">{numberConverter(props.postData.score)}</span>
                     </div>
-                    <Link to={`${props.postData.id}`} className="comment-icon-link" >
+                    <Link to={subreddit ? `${props.postData.id}` : `r/${props.postData.subreddit}/${props.postData.id}`} className={key ? "comment-icon-link-deactivated" :"comment-icon-link"} onClick={linkClickHandler} > 
                         <div className="comment-icon-container" onClick={postClickHandler}>
                             <BiCommentDetail id="comment-icon" />
                             <span className="comments-number">{numberConverter(props.postData.num_comments)}</span>
@@ -137,7 +139,7 @@ export function Post(props){
                         {props.postData.subreddit_name_prefixed}
                       </Link>
                     </span>
-                    <Link to={`${props.postData.id}`} onClick={linkClickHandler} >
+                    <Link to={ subreddit ? `${props.postData.id}` : `r/${props.postData.subreddit}/${props.postData.id}`} onClick={linkClickHandler} className={key ? "title-link-deactivated" : "title-link"} >
                         <h3 className="post-title" > {props.postData.title} </h3>
                     </Link>
                     <span className="author">Posted by: {props.postData.author}</span>

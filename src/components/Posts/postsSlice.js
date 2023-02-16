@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getMorePosts, getPosts } from "../../api/redditApi";
 
-
+export const defaultSubreddit = "worldnews"
 
 export const postsSlice = createSlice({
     name: "posts",
     initialState: {
-        selectedSubreddit: "worldnews",
+        selectedSubreddit: defaultSubreddit,
         hasError: false,
         isLoadingPosts: false,
         posts: [],
@@ -29,7 +29,6 @@ export const postsSlice = createSlice({
         },
         selectSubreddit(state, action){
             state.selectedSubreddit = action.payload;
-            state.showPostWithComments = false;
         },
         selectPost(state, action){
             state.selectedPostData = action.payload;
