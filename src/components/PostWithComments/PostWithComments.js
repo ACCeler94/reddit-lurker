@@ -2,14 +2,14 @@ import React from "react";
 import { Post } from "../Post/Post";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchComments, isLoadingComments, selectComments } from "./postWithCommentsSlice";
+import { fetchComments, fetchPostData, isLoadingComments, selectComments } from "./postWithCommentsSlice";
 import { selectSelectedPost,} from "../Posts/postsSlice";
 import { Loader } from "../Loader/Loader";
 import "./PostWithComments.css"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ImArrowUp } from "react-icons/im"
 import { numberConverter } from "../../helpers/numberConverter";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 
 
@@ -19,19 +19,28 @@ export function PostWithComments() {
     const dispatch = useDispatch();
     const commentsList = useSelector(selectComments);
     const loadingComments = useSelector(isLoadingComments);
-    const selectedPost = useSelector(selectSelectedPost)
-    const permalink = selectedPost.permalink
-    const postData = useSelector(selectSelectedPost)
-    const params = useParams()
+    const selectedPost = useSelector(selectSelectedPost);
+    const permalink = selectedPost.permalink;
+    const postData = useSelector(selectSelectedPost);
+    const params = useParams();
+    const location = useLocation();
+    const pathname = location.pathname
+
 
 
     useEffect(() => {
-        // refresh? persistent state?
-       { /* if(!permalink && params.key){
-            dispatch(fetchComments(`/r/${params.subreddit}/comments/${params.key}`))
-        } */ }
+        // fetch post data on page refresh
+        if(!postData.id){
+            dispatch(fetchPostData(pathname))
+        };
+
+        // pause fetching comments after refresh before post data is loaded
+        if(!permalink){
+            return
+        } else {
         dispatch(fetchComments(permalink));
-      }, [dispatch, permalink, params]);
+        }
+      }, [dispatch, permalink, params, pathname, postData.id]);
 
 
 
@@ -55,11 +64,23 @@ export function PostWithComments() {
                                 {renderReplies(reply)}
                             </div>
                         )
-                    }
+                    } return null
                     })}
                 </div>
-            )}}
+            )}
+        return null 
+    }
 
+    // showing loader when loading post data after refresh
+      if(!postData.id ){
+        return (
+            <div className="posts-loader">
+            <h3>Loading Post...</h3>
+            <Loader />
+            </div>
+        )
+        
+      }
 
 
       if(loadingComments){
@@ -94,6 +115,7 @@ export function PostWithComments() {
                             </div>
                         </li>
                     )}
+                    return null
                 })}
              </ul>
             </div>

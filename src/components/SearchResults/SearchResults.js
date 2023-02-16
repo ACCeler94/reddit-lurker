@@ -30,7 +30,7 @@ export function SearchResults() {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
           };
-    },[ref])
+    },[ref, dispatch, isShowingResults])
 
     const nsfwIndicator = (
         <span className="nsfw-indicator">NSFW</span>

@@ -38,3 +38,11 @@ export const getResults = async (searchQuery) => {
     const json = await response.json();
     return json.data.children.map(subreddit => subreddit.data)
 }
+
+// get post data based on current location - when user refreshes or manually inputs post id into url
+export const getPostData = async (currentLocation) =>{
+        const response = await fetch(`${API_ROOT}${currentLocation}.json`);
+        const json = await response.json();
+        const postData =  await json[0].data.children[0].data
+        return postData
+}

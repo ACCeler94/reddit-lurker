@@ -64,7 +64,7 @@ export function Post(props){
         } else if(contentType === "link"){
             return (
                 <div className="link-container">
-                    <a href={props.postData.url} target='_blank' className="link"> 
+                    <a href={props.postData.url} target='_blank' rel="noreferrer" className="link"> 
                     <img src={props.postData.thumbnail} className="link-thumbnail" alt="" />
                     <span className="link-text">{linkShortener(props.postData.url)}</span>
                     </a>
@@ -99,7 +99,7 @@ export function Post(props){
             } else {
                 return (
                     <div className="link-container">
-                        <a className="link" href={props.postData.url} target="_blank">{linkShortener(props.postData.url)}</a>
+                        <a className="link" href={props.postData.url} target="_blank" rel="noreferrer" >{linkShortener(props.postData.url)}</a>
                     </div>
                 )
             }
@@ -126,7 +126,7 @@ export function Post(props){
                         </div>
                     </Link>
                     <div>
-                        <a href={"https://www.reddit.com" + props.postData.permalink} className="redirect-container" target="_blank">
+                        <a href={"https://www.reddit.com" + props.postData.permalink} className="redirect-container" target="_blank" rel="noreferrer" >
                             <RiShareBoxLine id="redirect-icon" />
                             <span>Open on <span className="reddit">Reddit</span></span>
                         </a>

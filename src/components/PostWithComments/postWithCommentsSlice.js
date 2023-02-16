@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getComments } from "../../api/redditApi";
+import { getComments, getPostData } from "../../api/redditApi";
+import { selectPost } from "../Posts/postsSlice";
 
 export const postWithCommentsSlice = createSlice({
     name: "postWithComments",
     initialState: {
         comments: [],
         hasError: false,
-        isLoadingComments: false
+        isLoadingComments: false,
+        isLoadingPost: false
     },
     reducers: {
         startGetComments(state){
@@ -22,13 +24,26 @@ export const postWithCommentsSlice = createSlice({
             state.isLoadingComments = false;
             state.hasError = true;
         },
+        startGetPost(state){
+            state.isLoadingPost = true;
+            state.hasError = false;
+        },
+        getPostSuccess(state){
+            state.isLoadingPost = false;
+            state.hasError = false;
+        },
+        getPostFailed(state){
+            state.isLoadingPost = false;
+            state.hasError = true;
+        }
     }
 })
 
-export const { startGetComments, getCommentsSuccess, getCommentsFailed } = postWithCommentsSlice.actions;
+export const { startGetComments, getCommentsSuccess, getCommentsFailed, getPostFailed, getPostSuccess, startGetPost } = postWithCommentsSlice.actions;
 
 export const selectComments = (state) => state.postWithComments.comments;
 export const isLoadingComments = (state) => state.postWithComments.isLoadingComments;
+export const isLoadingPost = (state) => state.postWithComments.isLoadingPost
 
 export default postWithCommentsSlice.reducer;
 
@@ -43,3 +58,13 @@ export const fetchComments = (permalink) => async (dispatch) => {
         dispatch(getCommentsFailed())
     }}
 
+ // thunk for fetching post data after refresh or selecting post using params. I decided to not use redux persistent state - if a user wants to refresh then let the refresh happen
+    export const fetchPostData = (currentLocation) => async (dispatch) => {
+        try {
+            dispatch(startGetPost());
+            const postDataObject = await getPostData(currentLocation);
+            dispatch(selectPost(postDataObject))
+            dispatch(getPostSuccess())
+        } catch (error) {
+            dispatch(getPostFailed())
+        }}
