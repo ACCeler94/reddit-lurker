@@ -7,6 +7,6 @@ aside {
 main {
   grid-column: 2/span 2;
   background-color: var(--main-background-color);
-  grid-row: 2
-  
+  grid-row: 2;
+  height: 100%;
 }

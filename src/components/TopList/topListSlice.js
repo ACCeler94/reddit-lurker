@@ -42,6 +42,7 @@ export const fetchTopList = () => async (dispatch) => {
 
 export const selectTopList = (state) => state.topList.topListElements;
 export const isLoadingTopList = (state) => state.topList.isLoadingTopList;
+export const topListError = (state) => state.topList.hasError;
 
 export default topListSlice.reducer;
 

@@ -1,6 +1,6 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchMorePosts, isLoadingMorePosts, selectPosts, selectSelectedSubreddit } from "../Posts/postsSlice";
+import { fetchMorePosts, isLoadingMorePosts, postsError, selectPosts, selectSelectedSubreddit } from "../Posts/postsSlice";
 import "./LoadMoreButton.css"
 import { Loader } from "../Loader/Loader";
 
@@ -11,10 +11,15 @@ export function LoadMoreButton() {
     const selectedSubreddit = useSelector(selectSelectedSubreddit)
     const posts = useSelector(selectPosts)
     const isLoadingMore = useSelector(isLoadingMorePosts)
+    const hasError = useSelector(postsError)
   
     const loadMorePostsClickHandler = () =>{
       const lastPostName = posts[posts.length -1].name
       dispatch(fetchMorePosts(selectedSubreddit, lastPostName))
+    }
+
+    if(hasError){
+        return
     }
   
 

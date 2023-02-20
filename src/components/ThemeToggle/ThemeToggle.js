@@ -1,44 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import './ThemeToggle.css'
+import React, { useEffect, useState } from "react";
+import "./ThemeToggle.css";
 
 export function ThemeToggle() {
-    const [ isDark, setIsDark ] = useState(true);
+  const [isDark, setIsDark] = useState(
+    JSON.parse(localStorage.getItem("isDark"))
+  );
+  console.log("isDark", isDark);
 
-    const root = document.querySelector(':root')
-
-    const storeUserSetPreference = (pref) => {
-        localStorage.setItem("isDark", pref);
-        };
-
-    
-    const getUserSetPreference = () => {
-        return localStorage.getItem("isDark");
-            };
-
-
-    const changeThemeHandler = () => {
-        setIsDark(!isDark)
-        storeUserSetPreference(isDark)
+  useEffect(() => {
+    const rootElement = document.querySelector(":root");
+    localStorage.setItem("isDark", JSON.stringify(isDark));
+    if (isDark) {
+      rootElement.classList.add("dark");
+    } else {
+      rootElement.classList.remove("dark");
     }
+  }, [isDark]);
 
-    
-
-    useEffect(() => {
-        let userPref = getUserSetPreference()
-        console.log(userPref)
-
-        if(!isDark){
-            root.classList.add('dark')
-        } else {
-            root.classList.remove('dark')
-        }
-    }, [isDark, root.classList ])
-
-
-    return (
-        <div className='toggle'>
-            <input type='checkbox' id='darkmode-toggle' onChange={changeThemeHandler} defaultChecked={!isDark} />
-            <label for='darkmode-toggle' id='toggle-label' />
-        </div>
-    )
+  return (
+    <div className="toggle">
+      <input
+        type="checkbox"
+        id="darkmode-toggle"
+        onChange={(e) => setIsDark(e.target.checked)}
+        checked={isDark}
+      />
+      <label for="darkmode-toggle" id="toggle-label" />
+    </div>
+  );
 }

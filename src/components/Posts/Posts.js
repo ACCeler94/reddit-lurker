@@ -2,15 +2,17 @@ import React, { useEffect,  } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../Loader/Loader";
 import { Post } from "../Post/Post";
-import { fetchPosts, isLoadingPosts, selectPosts, selectSelectedSubreddit,selectSubreddit} from "./postsSlice";
+import { fetchPosts, isLoadingPosts, postsError, selectPosts, selectSelectedSubreddit,selectSubreddit} from "./postsSlice";
 import "./Posts.css"
 import { useParams } from "react-router-dom";
+import { ErrorPage } from "../ErrorPage/ErrorPage";
 
 export function Posts() {
     const dispatch = useDispatch();
     const postsList = useSelector(selectPosts);
     const isLoading = useSelector(isLoadingPosts);
     const selectedSubreddit = useSelector(selectSelectedSubreddit);
+    const hasError = useSelector(postsError)
     const { subreddit } = useParams()
 
     useEffect(() => {
@@ -23,6 +25,9 @@ export function Posts() {
         dispatch(selectSubreddit(subreddit))
     }
 
+    if(hasError){
+        return <ErrorPage errorType={"Posts"} />
+    }
 
     if(isLoading){
         return (

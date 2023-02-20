@@ -43,7 +43,8 @@ export const { startGetComments, getCommentsSuccess, getCommentsFailed, getPostF
 
 export const selectComments = (state) => state.postWithComments.comments;
 export const isLoadingComments = (state) => state.postWithComments.isLoadingComments;
-export const isLoadingPost = (state) => state.postWithComments.isLoadingPost
+export const isLoadingPost = (state) => state.postWithComments.isLoadingPost;
+export const postWithCommentsError = (state) => state.postWithComments.hasError;
 
 export default postWithCommentsSlice.reducer;
 

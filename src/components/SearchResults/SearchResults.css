@@ -76,3 +76,8 @@
     border: 2px solid #FF0000;
     border-radius: 15px;
 }
+
+#no-results-message {
+    text-align: center;
+    color: var(--default-color);
+}

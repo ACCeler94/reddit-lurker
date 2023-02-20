@@ -33,3 +33,27 @@
     padding: 0 5%;
 }
 
+.error-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-list-button {
+    background-color: #ff4500;
+    color: #fff;
+    width: 40%;
+    min-width: 100px;
+    border-radius: 12px;
+    border: solid 1px var(--light-border);
+    height: 40px;
+    margin: 10% auto;
+}
+
+.top-list-button:active {
+    background-color: #9d3814;
+    border-color: #000;
+}
+
+.top-list-button span {
+    font-size: 1rem;
+}

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { hideSearchResults, isShowingSearchResults, selectSearchResults } from "../SearchBar/searchBarSlice";
+import { hideSearchResults, isShowingSearchResults, searchBarError, selectSearchResults } from "../SearchBar/searchBarSlice";
 import "./SearchResults.css"
 import { selectSubreddit } from "../Posts/postsSlice";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ export function SearchResults() {
     const dispatch = useDispatch();
     const results = useSelector(selectSearchResults);
     const isShowingResults = useSelector(isShowingSearchResults)
+    const hasError = useSelector(searchBarError)
 
 
     const resultClickHandler = (subName) =>{
@@ -36,6 +37,16 @@ export function SearchResults() {
         <span className="nsfw-indicator">NSFW</span>
     )
 
+    // display message when no results found or failed to load results
+    if(hasError || results[0] === undefined){
+        return (
+            <div className="search-results" id="search-results" ref={ref}  >
+                <div className="search-results-list-wrapper">
+                    <h5 id="no-results-message" >No results found</h5>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className="search-results" id="search-results" ref={ref}  >

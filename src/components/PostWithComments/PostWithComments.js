@@ -2,7 +2,7 @@ import React from "react";
 import { Post } from "../Post/Post";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchComments, fetchPostData, isLoadingComments, selectComments } from "./postWithCommentsSlice";
+import { fetchComments, fetchPostData, isLoadingComments, postWithCommentsError, selectComments } from "./postWithCommentsSlice";
 import { selectSelectedPost,} from "../Posts/postsSlice";
 import { Loader } from "../Loader/Loader";
 import "./PostWithComments.css"
@@ -10,6 +10,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ImArrowUp } from "react-icons/im"
 import { numberConverter } from "../../helpers/numberConverter";
 import { useLocation, useParams } from "react-router-dom";
+import { ErrorPage } from "../ErrorPage/ErrorPage";
 
 
 
@@ -22,9 +23,11 @@ export function PostWithComments() {
     const selectedPost = useSelector(selectSelectedPost);
     const permalink = selectedPost.permalink;
     const postData = useSelector(selectSelectedPost);
+    const hasError = useSelector(postWithCommentsError)
     const params = useParams();
     const location = useLocation();
-    const pathname = location.pathname
+    const pathname = location.pathname;
+  
 
 
 
@@ -43,7 +46,9 @@ export function PostWithComments() {
       }, [dispatch, permalink, params, pathname, postData.id]);
 
 
-
+      if(hasError){
+        return <ErrorPage errorType={"Post with comments"} />
+      }
 
 
       // function for rendering comment's replies

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { selectTopList, isLoadingTopList, fetchTopList } from "./topListSlice";
+import { selectTopList, isLoadingTopList, fetchTopList, topListError } from "./topListSlice";
 import { useDispatch, useSelector} from "react-redux";
 import { Loader } from "../Loader/Loader";
 import './TopList.css'
@@ -10,12 +10,25 @@ export function TopList() {
     const dispatch = useDispatch();
     const topList = useSelector(selectTopList)
     const isLoading = useSelector(isLoadingTopList)
+    const hasError = useSelector(topListError)
 
     useEffect(() => {
         dispatch(fetchTopList());
       }, [dispatch]);
     
-    
+    if(hasError){
+        return (
+            <div className='side-bar'>
+                <h3>Top Subreddits</h3>
+                <div className="error-wrapper">
+                    <h4>Failed to load Top Subreddits</h4>
+                    <button className="top-list-button" onClick={()=>dispatch(fetchTopList())}><span>Try again</span></button>
+                </div>
+            </div>
+            )
+    }
+
+
     if(isLoading){
         return ( 
         <div className='side-bar'>

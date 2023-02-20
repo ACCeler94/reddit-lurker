@@ -43,6 +43,7 @@ export const selectSearchQuery = (state) => state.searchBar.searchQuery;
 export const selectSearchResults = (state) => state.searchBar.searchResults;
 export const isLoadingSearchResults = (state) => state.searchBar.isLoadingResults;
 export const isShowingSearchResults = (state) => state.searchBar.showingSearchResults;
+export const searchBarError = (state) => state.searchBar.hasError;
 
 export default searchBarSlice.reducer;
 
