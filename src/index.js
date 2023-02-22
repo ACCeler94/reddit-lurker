@@ -5,7 +5,7 @@ import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements, createHashRouter } from 'react-router-dom';
 import { PostWithComments } from './components/PostWithComments/PostWithComments';
 import { Posts } from './components/Posts/Posts';
 import { LoadMoreButton } from './components/LoadMoreButton/LoadMoreButton';
@@ -15,7 +15,7 @@ const root = createRoot(container);
 
 
 
-const router = createBrowserRouter(createRoutesFromElements(
+const router = createHashRouter(createRoutesFromElements(
   <Route path="/" element={ <App />}>
     <Route index element={ (
     <>
