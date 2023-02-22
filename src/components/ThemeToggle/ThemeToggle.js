@@ -5,7 +5,7 @@ export function ThemeToggle() {
   const [isDark, setIsDark] = useState(
     JSON.parse(localStorage.getItem("isDark"))
   );
-  console.log("isDark", isDark);
+
 
   useEffect(() => {
     const rootElement = document.querySelector(":root");
