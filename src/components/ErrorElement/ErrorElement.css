@@ -1,0 +1,12 @@
+
+.error-element {
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+    height: 40%;
+    margin: 4% auto;
+    background-color: var(--background-color);
+    padding: 36px;
+    grid-column: 1 / span 3;
+}
+

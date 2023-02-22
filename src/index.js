@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements } 
 import { PostWithComments } from './components/PostWithComments/PostWithComments';
 import { Posts } from './components/Posts/Posts';
 import { LoadMoreButton } from './components/LoadMoreButton/LoadMoreButton';
+import { ErrorElement } from './components/ErrorElement/ErrorElement';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -16,7 +17,7 @@ const root = createRoot(container);
 
 
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={ <App />}>
+  <Route path="/" element={ <App />} errorElement={ <ErrorElement /> } >
     <Route index element={ (
     <>
     <Posts />
@@ -30,6 +31,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <LoadMoreButton />
         </>
       )} />
+
   </Route>
 ))
 
