@@ -5,12 +5,13 @@ import { RiShareBoxLine } from  "react-icons/ri"
 import './Post.css'
 import ReactMarkdown from "react-markdown";
 import { linkShortener } from "../../helpers/linkShortener";
-import { selectPost, selectSelectedSubreddit } from "../Posts/postsSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { selectPost } from "../Posts/postsSlice";
+import { useDispatch} from "react-redux";
 import { numberConverter } from "../../helpers/numberConverter";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { selectSubreddit } from "../Posts/postsSlice";
+
+
 
 
 
@@ -35,11 +36,7 @@ export function Post(props){
             event.preventDefault()
         }
     }
-
-    const selectedSubreddit = useSelector(selectSelectedSubreddit);
-    if(selectedSubreddit !== subreddit && subreddit){
-        dispatch(selectSubreddit(subreddit))
-    }
+  
 
     // statements for rendering different types of content
 
@@ -125,7 +122,7 @@ export function Post(props){
                             <span className="comments-number">{numberConverter(props.postData.num_comments)}</span>
                         </div>
                     </Link>
-                    <div>
+                    <div className="redirect-box">
                         <a href={"https://www.reddit.com" + props.postData.permalink} className="redirect-container" target="_blank" rel="noreferrer" >
                             <RiShareBoxLine id="redirect-icon" />
                             <span>Open on <span className="reddit">Reddit</span></span>

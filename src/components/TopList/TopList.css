@@ -57,3 +57,30 @@
 .top-list-button span {
     font-size: 1rem;
 }
+
+#side-bar-close-icon {
+    position: absolute;
+    right: 15%;
+    top: 5%;
+    color: var(--default-color);
+    height: 30px;
+    width: 30px;
+    display: none;
+}
+
+
+@media only screen and (max-width: 1024px){
+    .side-bar {
+        background-color: var(--background-color);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40%;
+        height: 100%;
+        padding: 3%;
+    }
+
+    #side-bar-close-icon {
+        display: block;
+    }
+}

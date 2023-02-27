@@ -59,7 +59,7 @@ export function PostWithComments() {
                     {comment.data.replies.data.children.map(reply => {
                         if(reply.data.body){
                         return (
-                            <div className="comment-card">
+                            <div className="comment-card" key={reply.data.id}>
                                 <span className="comment-author">{reply.data.author}</span>
                                 <ReactMarkdown>{reply.data.body}</ReactMarkdown>
                                 <div className="upvotes">

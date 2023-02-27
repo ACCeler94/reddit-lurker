@@ -25,7 +25,7 @@ export function ThemeToggle() {
         onChange={(e) => setIsDark(e.target.checked)}
         checked={isDark}
       />
-      <label for="darkmode-toggle" id="toggle-label" />
+      <label htmlFor="darkmode-toggle" id="toggle-label" />
     </div>
   );
 }

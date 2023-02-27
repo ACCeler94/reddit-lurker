@@ -8,6 +8,7 @@
   --author-color: #616161;
   --light-border: #F6F7F8;
   --input-background-color: #F6F7F8;
+  --overlay-color: rgba(189, 195, 199, 0.8)
 }
 
 :root.dark {
@@ -20,6 +21,7 @@
   --author-color: #cfcccc;
   --light-border: #5b5b5b;
   --input-background-color: #4d4b4b;
+  --overlay-color: rgba(0, 0, 0, 0.8);
 }
 
 
@@ -47,4 +49,5 @@ a {
 #root {
   display: grid;
   grid-template-columns: 1fr 2fr 1.5fr;
+  overflow: clip;
 }

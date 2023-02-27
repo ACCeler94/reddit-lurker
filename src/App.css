@@ -1,6 +1,8 @@
-aside {
+#side-nav-bar {
   grid-row: 2;
   padding-left: 16px;
+  opacity: 1;
+  visibility: visible;
 }
 
 
@@ -10,3 +12,25 @@ main {
   grid-row: 2;
   height: 100%;
 }
+
+
+  #mobile-side-nav-bar {
+      z-index: 999;
+      position: fixed;
+      background-color: var(--overlay-color);
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: 0.4s;
+      visibility: hidden;
+      opacity: 0;
+      padding-left: 16px;
+  }
+ 
+  @media only screen and (max-width: 1024px){
+  main {
+    grid-column: 1 / span 3;
+  }
+
+}
+

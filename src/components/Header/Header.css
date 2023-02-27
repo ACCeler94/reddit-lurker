@@ -3,14 +3,14 @@ header {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-gap: 16px;
-    align-content: center;
+    align-items: center;
     padding: 0 3%;
     border-bottom: 2px solid var(--light-border);
     background-color: var(--background-color);
     position: sticky;
     top: 0;
-    max-height: 4em;
-    z-index: 999;
+    height: 4rem;
+    z-index: 998;
 }
 
 #title-logo {
@@ -29,6 +29,38 @@ header {
 
 #title-logo p {
     font-family: sans-serif;
+    margin: 0px;
     margin-left: 2.5%;
     font-size: 1.5rem;
+}
+
+#hamburger-icon {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px){
+    #hamburger-icon {
+        display: flex;
+        width: 30px;
+        height: 30px;
+        grid-column: 1/2;
+
+    }
+
+    header {
+        grid-template-columns: 0.25fr 1fr 2fr 0.5fr;
+    }
+
+    #title-logo {
+        grid-column: 2/3;
+    }
+
+}
+
+
+@media only screen and (max-width: 768px) {
+    header {
+        grid-template-columns: 0.25fr 1fr 2fr;
+    }
+
 }

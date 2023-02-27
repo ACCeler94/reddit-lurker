@@ -180,3 +180,36 @@
 .comment-icon-link-deactivated:hover #comment-icon {
     color: var(--default-color)
 }
+
+@media only screen and (max-width: 768px){
+    .post-wrapper {
+        flex-direction: column-reverse;
+        padding-left: 36px;
+    }
+
+    .post-container {
+        width: 90%;
+        align-self: center;
+    }
+
+    .extra-container {
+        flex-direction: row;
+        width: 80%;
+        margin-top: 5%;
+    }
+
+    .arrow-container {
+        width: 10%;
+        margin-left: 10%;
+    }
+
+    .comment-icon-link {
+        width: 20%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .redirect-box {
+        width: 20%;
+    }
+}
