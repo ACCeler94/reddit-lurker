@@ -221,3 +221,16 @@
         padding-right: 5%;
     }
 }
+
+@media only screen and (max-width: 330px){
+    .post-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 95%;
+    }
+
+    .link-container a {
+        max-width: 90%;
+        overflow-x: hidden;
+    }
+}

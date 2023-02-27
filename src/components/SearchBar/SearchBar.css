@@ -1,3 +1,5 @@
+
+
 .search-bar {
     display: flex;
     align-items: center;
@@ -26,3 +28,9 @@
     border: 1px solid blue;
 }
 
+@media only screen and (max-width: 330px){
+    .search-bar input {
+        max-width: 85%;
+    }
+
+}
