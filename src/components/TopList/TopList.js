@@ -62,7 +62,7 @@ export function TopList() {
     }   
 
     // add theme toggle to the side bar for mobile, if done with media queries - toggles would be out of sync
-    if(width < 768){
+    if(width <= 768){
         return (
             <div className='side-bar'>
                 <ThemeToggle />
@@ -71,7 +71,7 @@ export function TopList() {
                 <ul className="subreddit-list">
                     {topList.slice(0, 8).map(element => {
                         return (
-                        <NavLink to={`r/${element.display_name}`} key={element.id}  >
+                        <NavLink to={`r/${element.display_name}`} key={element.id} tabIndex="0">
                             <li 
                                 id={element.display_name} 
                                 onClick={topListClickHandler} >
@@ -88,13 +88,13 @@ export function TopList() {
 
 
     return (
-        <div className='side-bar'>
+        <div className='side-bar' >
             < MdClose id="side-bar-close-icon" onClick={closeSideBar} />
             <h3>Top Subreddits</h3>
             <ul className="subreddit-list">
                 {topList.slice(0, 8).map(element => {
                     return (
-                    <NavLink to={`r/${element.display_name}`} key={element.id}>
+                    <NavLink to={`r/${element.display_name}`} key={element.id} tabIndex="0">
                         <li 
                             id={element.display_name} 
                             onClick={topListClickHandler} >

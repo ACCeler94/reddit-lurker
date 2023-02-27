@@ -116,14 +116,14 @@ export function Post(props){
                         <ImArrowUp id="arrow-icon" />
                         <span className="votes-number">{numberConverter(props.postData.score)}</span>
                     </div>
-                    <Link to={subreddit ? `${props.postData.id}` : `r/${props.postData.subreddit}/${props.postData.id}`} className={key ? "comment-icon-link-deactivated" :"comment-icon-link"} onClick={linkClickHandler} > 
+                    <Link to={subreddit ? `${props.postData.id}` : `r/${props.postData.subreddit}/${props.postData.id}`} className={key ? "comment-icon-link-deactivated" :"comment-icon-link"} onClick={linkClickHandler} tabIndex="0"> 
                         <div className="comment-icon-container" onClick={postClickHandler}>
                             <BiCommentDetail id="comment-icon" />
                             <span className="comments-number">{numberConverter(props.postData.num_comments)}</span>
                         </div>
                     </Link>
                     <div className="redirect-box">
-                        <a href={"https://www.reddit.com" + props.postData.permalink} className="redirect-container" target="_blank" rel="noreferrer" >
+                        <a href={"https://www.reddit.com" + props.postData.permalink} className="redirect-container" target="_blank" rel="noreferrer" tabIndex="0" >
                             <RiShareBoxLine id="redirect-icon" />
                             <span>Open on <span className="reddit">Reddit</span></span>
                         </a>
@@ -132,11 +132,11 @@ export function Post(props){
             <div className="post-container" onClick={postClickHandler} >
                 <div className="post-info">
                     <span className="subreddit-name">
-                      <Link to={`/r/${props.postData.subreddit}`} >
+                      <Link to={`/r/${props.postData.subreddit}`} tabIndex="0" >
                         {props.postData.subreddit_name_prefixed}
                       </Link>
                     </span>
-                    <Link to={ subreddit ? `${props.postData.id}` : `r/${props.postData.subreddit}/${props.postData.id}`} onClick={linkClickHandler} className={key ? "title-link-deactivated" : "title-link"} >
+                    <Link to={ subreddit ? `${props.postData.id}` : `r/${props.postData.subreddit}/${props.postData.id}`} onClick={linkClickHandler} className={key ? "title-link-deactivated" : "title-link"} tabIndex="0" >
                         <h3 className="post-title" > {props.postData.title} </h3>
                     </Link>
                     <span className="author">Posted by: {props.postData.author}</span>

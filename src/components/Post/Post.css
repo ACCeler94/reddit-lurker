@@ -213,3 +213,11 @@
         width: 20%;
     }
 }
+
+@media only screen and (max-width: 600px){
+    .post-wrapper {
+        margin: 6% auto;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}

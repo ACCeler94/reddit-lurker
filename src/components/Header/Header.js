@@ -22,12 +22,12 @@ export function Header() {
     }
 
     // render theme toggle in header depending on screen size
-    if(width < 768){
+    if(width <= 768){
 
     return (
         <header>
-            <RxHamburgerMenu id="hamburger-icon" onClick={hamburgerClickHandler} />
-            <Link to={'/'} id="title-logo" onClick={() => dispatch(selectSubreddit(defaultSubreddit))}>
+            <RxHamburgerMenu id="hamburger-icon" onClick={hamburgerClickHandler}/>
+            <Link to={'/'} id="title-logo" onClick={() => dispatch(selectSubreddit(defaultSubreddit))} tabIndex="0" >
                 <img src={logo} alt="reddit lurker logo" />
                 <p>Reddit Lurker</p>
             </Link>
@@ -39,7 +39,7 @@ export function Header() {
     return (
             <header>
             <RxHamburgerMenu id="hamburger-icon" onClick={hamburgerClickHandler}/>
-            <Link to={'/'} id="title-logo" onClick={() => dispatch(selectSubreddit(defaultSubreddit))}>
+            <Link to={'/'} id="title-logo" onClick={() => dispatch(selectSubreddit(defaultSubreddit))} tabIndex="0" >
                 <img src={logo} alt="reddit lurker logo" />
                 <p>Reddit Lurker</p>
             </Link>

@@ -64,3 +64,14 @@ header {
     }
 
 }
+
+@media only screen and (max-width: 600px) {
+    #title-logo img {
+        height: 28px;
+        width: 28px;
+    }
+
+    #title-logo p {
+        font-size: 1rem;
+    }
+}

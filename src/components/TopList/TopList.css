@@ -61,7 +61,7 @@
 #side-bar-close-icon {
     position: absolute;
     right: 15%;
-    top: 5%;
+    top: 3%;
     color: var(--default-color);
     height: 30px;
     width: 30px;
@@ -76,11 +76,16 @@
         left: 0;
         top: 0;
         width: 40%;
-        height: 100%;
         padding: 3%;
     }
 
     #side-bar-close-icon {
         display: block;
+    }
+}
+
+@media only screen and (max-width: 425px){
+    .side-bar {
+        width: 75%;
     }
 }
