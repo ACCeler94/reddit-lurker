@@ -22,9 +22,9 @@ Reddit Lurker is a minimalistic Reddit.com clone project build using Reddit JSON
  - React
  - Redux
  - CSS
- - [React Markdown](https://github.com/remarkjs/react-markdown)
 
 **Known issues:**
 
- -  Videos play without any sound - Reddit.com separates audio and video in its files and uses custom video player to combine those two together. Solution would be to find or build similar video player
- - Galleries show link or only the first picture - galleries are fetched in a completely different format. To solve this issue separate method of displaying and fetching content would need to be build. Right now these are out of scope for this project
+ -  Videos play without any sound - Reddit.com separates audio and video in its files and uses a custom video player to combine those two together. The solution would be to find or build similar video player
+  - Galleries show link or only the first picture - galleries are fetched in a completely different format. To solve this issue, separate method of displaying and fetching content would need to be built. Right now, these are out of scope for this project 
+  - Only the first batch of comments is loaded under the post - getting more comments would require making POST request with a list of comment IDs to fetch. Problem with this solution is that manual reconstruction of the comment tree (which comment is a reply, which is the parent comment). Doing so would be labor intensive and not necessary for the purpose of this project.
