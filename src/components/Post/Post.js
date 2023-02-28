@@ -10,9 +10,7 @@ import { useDispatch} from "react-redux";
 import { numberConverter } from "../../helpers/numberConverter";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-
-
-
+import { timestampConverter } from "../../helpers/timestampConverter";
 
 
 
@@ -140,6 +138,7 @@ export function Post(props){
                         <h3 className="post-title" > {props.postData.title} </h3>
                     </Link>
                     <span className="author">Posted by: {props.postData.author}</span>
+                    <span className="timestamp">{timestampConverter(props.postData.created)}</span>
                 </div>
                 <div className="content">
                     {setContent(contentType)}

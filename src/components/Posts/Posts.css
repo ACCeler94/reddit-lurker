@@ -6,3 +6,9 @@ margin: auto;
 margin: 5% auto;
 text-align: center;
 }
+
+@media only screen and (max-width: 425px){
+    .posts-loader h3 {
+        font-size: 1rem;
+    }
+}

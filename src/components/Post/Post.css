@@ -73,7 +73,6 @@
     
 }
 
-
 #arrow-icon {
     height: 1.3em;
     width: 1.3em;
@@ -143,6 +142,12 @@
     color: var(--author-color);
 }
 
+.timestamp {
+    font-size: 0.75em;
+    color: var(--author-color);
+    margin-left: 5%;
+}
+
 .link-container {
     display: flex;
 }
@@ -204,13 +209,17 @@
     }
 
     .comment-icon-link {
-        width: 20%;
+        width: 30%;
         margin-left: 10%;
         margin-right: 10%;
     }
 
     .redirect-box {
-        width: 20%;
+        width: 30%;
+    }
+
+    .comment-icon-link-deactivated {
+        width: 50%;
     }
 }
 
@@ -222,15 +231,28 @@
     }
 }
 
-@media only screen and (max-width: 330px){
+@media only screen and (max-width: 425px){
     .post-wrapper {
         padding-left: 0;
         padding-right: 0;
         max-width: 95%;
+        padding-bottom: 5%;
     }
 
     .link-container a {
         max-width: 90%;
         overflow-x: hidden;
     }
+
+    .extra-container {
+        font-size: 14px;
+        margin-top: 10%;
+    }
+
+    #comment-icon {
+        width: 1.2em;
+        height: 1.2em;
+    }
+
+
 }

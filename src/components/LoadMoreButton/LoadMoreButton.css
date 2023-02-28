@@ -23,3 +23,9 @@
     background-color: #9d3814;
     border-color: #000;
 }
+
+@media only screen and (max-width: 425px){
+    .load-more-button {
+        width: auto;
+    }
+}
