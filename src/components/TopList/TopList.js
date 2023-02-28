@@ -16,6 +16,7 @@ export function TopList() {
     const isLoading = useSelector(isLoadingTopList);
     const hasError = useSelector(topListError);
     const {width} = useScreenWidth();
+    const sideNavBar = document.getElementById("mobile-side-nav-bar")
 
 
 
@@ -26,10 +27,18 @@ export function TopList() {
 
     // event handler on X icon to close side bar on mobile
     const closeSideBar = () =>{
-      const sideNavBar = document.getElementById("mobile-side-nav-bar")
       sideNavBar.style.visibility = "hidden"
       sideNavBar.style.opacity = 0
     }
+
+        // change handler for selecting subreddits
+        const topListClickHandler = (event) => {
+            dispatch(selectSubreddit(event.target.id))
+            // close mobile side bar on subreddit selection
+            if(sideNavBar){
+            closeSideBar()}
+         }   
+     
 
 
     if(hasError){
@@ -56,10 +65,6 @@ export function TopList() {
     }
 
 
-    // change handler for selecting subreddits
-    const topListClickHandler = (event) => {
-       dispatch(selectSubreddit(event.target.id))
-    }   
 
     // add theme toggle to the side bar for mobile, if done with media queries - toggles would be out of sync
     if(width <= 768){
